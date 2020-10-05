@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+// variables
+$breakpoint_min: 320px;
+$breakpoint_sp: 767px;
+$breakpoint_middle: 1028px;
+$breakpoint_pc: $breakpoint_sp + 1;
+// $breakpoint_tablet: 768px;
+$breakpoint_max: 1920px;
+
+$mainColor : #00AAD1;
+$textColor : #000000;
+
+//
+//  Mixin
+//
+
+// Media Query
+@mixin media_pc {
+  @media print, screen and (min-width: $breakpoint_pc) {
+    @content;
+  }
+}
+@mixin media_sp {
+  @media screen and (max-width: $breakpoint_sp) {
+    @content;
+  }
+}
+
+@mixin max-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin min-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+    @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+        @content;
+    }
+}
+
+@mixin transition($porp: all, $time: .2s, $action: ease-in-out) {
+    -webkit-transition: $porp $time $action;
+    transition: $porp $time $action;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+@mixin animation($animation-name) {
+    -webkit-animation: $animation-name;
+    -moz-animation: $animation-name;
+    animation: $animation-name;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+// clearfix
+@mixin cf {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin opacity {
+  transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+
+
